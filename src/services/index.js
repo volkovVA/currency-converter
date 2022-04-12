@@ -7,7 +7,7 @@ export default class CurrencyService {
   apiKey = '48b52c0f62ee36b70da06ee1';
 
   getExchangeRate = async () => {
-    const result = await fetch(`${this.apiBase}/${this.apiKey}/latest/RUB`);
+    const result = await fetch(`${this.apiBase}/${this.apiKey}/latest/USD`);
 
     if (!result.ok) {
       throw new Error(
@@ -31,9 +31,10 @@ export default class CurrencyService {
   };
 
   transformCurrency = (result) => {
-    const details = result[1].map((item) => {
+    const details = result[1].map((item, idx) => {
       return {
         ...item,
+        id: idx + Math.random().toString(16).slice(2),
         amount: result[0].conversion_rates[item.currency.code]
       };
     });

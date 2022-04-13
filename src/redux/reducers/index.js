@@ -1,11 +1,11 @@
-/* eslint-disable */
 import { combineReducers } from 'redux';
 import * as types from '../constants';
 
 const initialState = {
-  currency: null,
+  currencySupported: null,
+  currencyConversion: null,
   loading: true,
-  error: null
+  error: null,
 };
 
 const currencyReducer = (state = initialState, action) => {
@@ -13,15 +13,23 @@ const currencyReducer = (state = initialState, action) => {
     case types.FETCH_CURRENCY_REQUEST: {
       return {
         ...state,
-        loading: true
+        loading: true,
       };
     }
 
     case types.FETCH_CURRENCY_SUCCESS: {
       return {
         ...state,
-        currency: action.payload,
-        loading: false
+        currencySupported: action.payload,
+        loading: false,
+      };
+    }
+
+    case types.FETCH_CONVERSION_SUCCESS: {
+      return {
+        ...state,
+        currencyConversion: action.payload,
+        loading: false,
       };
     }
 
@@ -29,7 +37,7 @@ const currencyReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload
+        error: action.payload,
       };
     }
 
@@ -39,5 +47,5 @@ const currencyReducer = (state = initialState, action) => {
 };
 
 export default combineReducers({
-  currency: currencyReducer
+  currency: currencyReducer,
 });

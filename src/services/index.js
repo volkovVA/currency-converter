@@ -17,6 +17,20 @@ export default class CurrencyService {
     return result.json();
   };
 
+  getConversion = async (base, target) => {
+    const result = await fetch(
+      `${this.apiBase}/${this.apiKey}/pair/${base}/${target}`
+    );
+
+    if (!result.ok) {
+      throw new Error(
+        `Could not fetch ${this.apiBase}, received ${result.status}`
+      );
+    }
+
+    return result.json();
+  };
+
   transformCurrency = (x, y) => {
     const list = y.supported_codes.map((el) => el[0]);
     return x.reduce((acc, el) => {

@@ -2,29 +2,30 @@ import React, { useState, useEffect } from 'react';
 import * as M from '@mui/material';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import { useDispatch, useSelector } from 'react-redux';
-import fetchCurrency from '../../redux/actions';
+import { fetchCurrency, fetchConversion } from '../../redux/actions';
 import CurrencyAutocompleteMain from '../CurrencyAutocomplete/CurrencyAutocompleteMain';
 import CurrencyAutocompleteSecond from '../CurrencyAutocomplete/CurrencyAutocompleteSecond';
 
 function CurrencyBox() {
-  const [mainValue, setMainValue] = useState('');
-  const [secondValue, setSecondValue] = useState('');
+  const [base, setBase] = useState('');
+  const [target, setTarget] = useState('');
   const dispatch = useDispatch();
-  const { currency, loading } = useSelector((state) => state.currency);
-  if (mainValue && secondValue) {
-    console.log(mainValue.currency.code);
-    console.log(secondValue.currency.code);
-  }
+  const { currencySupported, currencyConversion, loading } = useSelector(
+    (state) => state.currency
+  );
 
+  console.log(currencyConversion);
   const getCurrency = () => {
-    dispatch(fetchCurrency(mainValue.currency.code));
+    if (base && target) {
+      dispatch(fetchConversion(base.currency.code, target.currency.code));
+    }
   };
 
   useEffect(() => {
-    if (!currency) {
+    if (!currencySupported) {
       dispatch(fetchCurrency());
     }
-  }, [currency, dispatch]);
+  }, [currencySupported, dispatch]);
 
   if (loading) {
     return <h1>Loading...</h1>;
@@ -32,10 +33,13 @@ function CurrencyBox() {
 
   return (
     <div>
-      <CurrencyAutocompleteMain currency={currency} setValue={setMainValue} />
+      <CurrencyAutocompleteMain
+        currency={currencySupported}
+        setValue={setBase}
+      />
       <CurrencyAutocompleteSecond
-        currency={currency}
-        setValue={setSecondValue}
+        currency={currencySupported}
+        setValue={setTarget}
       />
       <M.Button
         variant="contained"

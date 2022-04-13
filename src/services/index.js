@@ -31,6 +31,16 @@ export default class CurrencyService {
     return result.json();
   };
 
+  transformDetails = (x) => {
+    return x.filter(
+      (el) =>
+        el.currency.name !== 'Euro_' &&
+        el.currency.name !== 'US Dollar_' &&
+        el.currency.name !== 'British Pound Sterling_' &&
+        el.currency.name !== 'Australian Dollar_'
+    );
+  };
+
   transformCurrency = (x, y) => {
     const list = y.supported_codes.map((el) => el[0]);
     return x.reduce((acc, el) => {
@@ -44,6 +54,9 @@ export default class CurrencyService {
   getCurrency = async () => {
     const currencySupported = await this.getSupportedCurrency();
 
-    return this.transformCurrency(currencyDetails, currencySupported);
+    return this.transformCurrency(
+      this.transformDetails(currencyDetails),
+      currencySupported
+    );
   };
 }

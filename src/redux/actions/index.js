@@ -12,13 +12,22 @@ const currencyLoaded = (data) => ({
   payload: data,
 });
 
+const currencyFailure = (error) => ({
+  type: types.FETCH_CURRENCY_FAILURE,
+  payload: error,
+});
+
+const conversionRequested = () => ({
+  type: types.FETCH_CONVERSION_REQUEST,
+});
+
 const conversionLoaded = (data) => ({
   type: types.FETCH_CONVERSION_SUCCESS,
   payload: data,
 });
 
-const currencyFailure = (error) => ({
-  type: types.FETCH_CURRENCY_FAILURE,
+const conversionFailure = (error) => ({
+  type: types.FETCH_CONVERSION_FAILURE,
   payload: error,
 });
 
@@ -33,12 +42,12 @@ const fetchCurrency = () => async (dispatch) => {
 };
 
 const fetchConversion = (base, target, amount) => async (dispatch) => {
-  dispatch(currencyRequested());
+  dispatch(conversionRequested());
   const data = await currencyService.getConversion(base, target, amount);
   try {
     dispatch(conversionLoaded(data));
   } catch (error) {
-    dispatch(currencyFailure(error));
+    dispatch(conversionFailure());
   }
 };
 

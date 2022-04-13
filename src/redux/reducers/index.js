@@ -4,7 +4,8 @@ import * as types from '../constants';
 const initialState = {
   currencySupported: null,
   currencyConversion: null,
-  loading: true,
+  loadingCurrency: true,
+  loadingConversion: true,
   error: null,
 };
 
@@ -13,7 +14,7 @@ const currencyReducer = (state = initialState, action) => {
     case types.FETCH_CURRENCY_REQUEST: {
       return {
         ...state,
-        loading: true,
+        loadingCurrency: true,
       };
     }
 
@@ -21,7 +22,22 @@ const currencyReducer = (state = initialState, action) => {
       return {
         ...state,
         currencySupported: action.payload,
-        loading: false,
+        loadingCurrency: false,
+      };
+    }
+
+    case types.FETCH_CURRENCY_FAILURE: {
+      return {
+        ...state,
+        loadingCurrency: false,
+        error: action.payload,
+      };
+    }
+
+    case types.FETCH_CONVERSION_REQUEST: {
+      return {
+        ...state,
+        loadingConversion: true,
       };
     }
 
@@ -29,14 +45,14 @@ const currencyReducer = (state = initialState, action) => {
       return {
         ...state,
         currencyConversion: action.payload,
-        loading: false,
+        loadingConversion: false,
       };
     }
 
-    case types.FETCH_CURRENCY_FAILURE: {
+    case types.FETCH_CONVERSION_FAILURE: {
       return {
         ...state,
-        loading: false,
+        loadingConversion: false,
         error: action.payload,
       };
     }

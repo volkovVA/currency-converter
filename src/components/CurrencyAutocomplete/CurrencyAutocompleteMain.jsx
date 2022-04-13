@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as M from '@mui/material';
 
-function CurrencyAutocompleteMain({ details }) {
+function CurrencyAutocompleteMain({ currency, setValue }) {
   const [image, setImage] = useState('');
 
   const setInputImage = (value) =>
@@ -11,28 +11,31 @@ function CurrencyAutocompleteMain({ details }) {
   if (image) {
     let img = `https://flagcdn.com/36x27/${image.toLowerCase()}.png`;
     style = {
-      background: `url(${img}) no-repeat 12px center`
+      background: `url(${img}) no-repeat 12px center`,
     };
   } else {
     style = {
-      background: 'none'
+      background: 'none',
     };
   }
 
   return (
     <M.Autocomplete
       sx={{ width: 500 }}
-      options={details}
+      options={currency}
       getOptionLabel={(option) =>
         `${option.currency.code} — ${option.currency.name}`
       }
-      onChange={(_, value) => setInputImage(value)}
+      onChange={(_, value) => {
+        setInputImage(value);
+        setValue(value);
+      }}
       renderOption={(props, option) => (
         <M.Box
           component="li"
           sx={{ '& > img': { mr: 2, flexShrink: 0 } }}
           {...props}
-          key={option.id}
+          key={option.isoCode}
         >
           <img
             loading="lazy"
@@ -54,11 +57,11 @@ function CurrencyAutocompleteMain({ details }) {
               ? {
                   ...params.inputProps,
                   style: {
-                    paddingLeft: '50px'
-                  }
+                    paddingLeft: '50px',
+                  },
                 }
               : {
-                  ...params.inputProps
+                  ...params.inputProps,
                 }
           }
           style={style}

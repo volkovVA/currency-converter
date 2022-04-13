@@ -1,13 +1,12 @@
-/* eslint-disable */
 import currencyDetails from './currency-details';
 
 export default class CurrencyService {
   apiBase = 'https://v6.exchangerate-api.com/v6';
 
-  apiKey = '48b52c0f62ee36b70da06ee1';
+  apiKey = 'c38e8ef6b1bbf0b783c814f2';
 
-  getExchangeRate = async () => {
-    const result = await fetch(`${this.apiBase}/${this.apiKey}/latest/USD`);
+  getSupportedCurrency = async () => {
+    const result = await fetch(`${this.apiBase}/${this.apiKey}/codes`);
 
     if (!result.ok) {
       throw new Error(
@@ -18,39 +17,19 @@ export default class CurrencyService {
     return result.json();
   };
 
-  getCurrencyDetails = async () => {
-    const promise = new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(currencyDetails);
-      }, 100);
-    });
-
-    const result = await promise;
-
-    return result;
-  };
-
-  transformCurrency = (result) => {
-    const details = result[1].map((item, idx) => {
-      return {
-        ...item,
-        id: idx + Math.random().toString(16).slice(2),
-        amount: result[0].conversion_rates[item.currency.code]
-      };
-    });
-
-    return {
-      ...result[0],
-      details
-    };
+  transformCurrency = (x, y) => {
+    const list = y.supported_codes.map((el) => el[0]);
+    return x.reduce((acc, el) => {
+      if (list.indexOf(el.currency.code) !== -1) {
+        acc.push(el);
+      }
+      return acc;
+    }, []);
   };
 
   getCurrency = async () => {
-    const result = await Promise.all([
-      this.getExchangeRate(),
-      this.getCurrencyDetails()
-    ]);
+    const currencySupported = await this.getSupportedCurrency();
 
-    return this.transformCurrency(result);
+    return this.transformCurrency(currencyDetails, currencySupported);
   };
 }

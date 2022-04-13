@@ -19,7 +19,7 @@ function CurrencyBox() {
         setTarget={setTarget}
       />
       <CurrencyButton base={base} target={target} amount={amount} />
-      <CurrencyOutput />
+      <CurrencyOutput amount={amount} />
     </div>
   );
 }

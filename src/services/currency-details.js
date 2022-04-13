@@ -833,7 +833,7 @@ const currencyDetails = [
     },
     currency: {
       symbol: '$',
-      name: '2',
+      name: 'US Dollar_',
       symbol_native: '$',
       decimal_digits: 2,
       rounding: 0,

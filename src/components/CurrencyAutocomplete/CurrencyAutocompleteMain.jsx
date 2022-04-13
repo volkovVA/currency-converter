@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as M from '@mui/material';
 
-function CurrencyAutocompleteMain({ currency, setValue }) {
+function CurrencyAutocompleteMain({ currency, setValue, setSymbol }) {
   const [image, setImage] = useState('');
 
   const setInputImage = (value) =>
@@ -29,6 +29,7 @@ function CurrencyAutocompleteMain({ currency, setValue }) {
       onChange={(_, value) => {
         setInputImage(value);
         setValue(value);
+        setSymbol(value);
       }}
       renderOption={(props, option) => (
         <M.Box

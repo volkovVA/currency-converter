@@ -32,9 +32,9 @@ const fetchCurrency = () => async (dispatch) => {
   }
 };
 
-const fetchConversion = (base, target) => async (dispatch) => {
+const fetchConversion = (base, target, amount) => async (dispatch) => {
   dispatch(currencyRequested());
-  const data = await currencyService.getConversion(base, target);
+  const data = await currencyService.getConversion(base, target, amount);
   try {
     dispatch(conversionLoaded(data));
   } catch (error) {

@@ -17,9 +17,9 @@ export default class CurrencyService {
     return result.json();
   };
 
-  getConversion = async (base, target) => {
+  getConversion = async (base, target, amount) => {
     const result = await fetch(
-      `${this.apiBase}/${this.apiKey}/pair/${base}/${target}`
+      `${this.apiBase}/${this.apiKey}/pair/${base}/${target}/${amount}`
     );
 
     if (!result.ok) {

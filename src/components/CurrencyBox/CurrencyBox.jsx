@@ -5,19 +5,27 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrency, fetchConversion } from '../../redux/actions';
 import CurrencyAutocompleteMain from '../CurrencyAutocomplete/CurrencyAutocompleteMain';
 import CurrencyAutocompleteSecond from '../CurrencyAutocomplete/CurrencyAutocompleteSecond';
+import CurrencyAmount from '../CurrencyAmount/CurrencyAmount';
 
 function CurrencyBox() {
   const [base, setBase] = useState('');
   const [target, setTarget] = useState('');
+  const [symbol, setSymbol] = useState('');
+  const [amount, setAmount] = useState('');
+
   const dispatch = useDispatch();
   const { currencySupported, currencyConversion, loading } = useSelector(
     (state) => state.currency
   );
 
   console.log(currencyConversion);
+
   const getCurrency = () => {
+    setSymbol('');
     if (base && target) {
-      dispatch(fetchConversion(base.currency.code, target.currency.code));
+      dispatch(
+        fetchConversion(base.currency.code, target.currency.code, amount)
+      );
     }
   };
 
@@ -32,10 +40,12 @@ function CurrencyBox() {
   }
 
   return (
-    <div>
+    <div style={{ marginTop: '10px' }}>
+      <CurrencyAmount symbol={symbol} setAmount={setAmount} />
       <CurrencyAutocompleteMain
         currency={currencySupported}
         setValue={setBase}
+        setSymbol={setSymbol}
       />
       <CurrencyAutocompleteSecond
         currency={currencySupported}

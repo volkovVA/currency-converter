@@ -2,9 +2,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import './CurrencyOutput.css';
 
-function CurrencyOutput({ amount }) {
-  const { currencySupported, currencyConversion, loadingConversion } =
-    useSelector((state) => state.currency);
+function CurrencyOutput() {
+  const { currencySupported, currencyConversion } = useSelector(
+    (state) => state.currency
+  );
 
   const getName = (code) => {
     if (currencySupported && currencyConversion) {
@@ -29,7 +30,8 @@ function CurrencyOutput({ amount }) {
     <div className="output">
       <div>
         <p className="output-base">
-          {amount}.00 {getName('base_code')} =
+          {currencyConversion && currencyConversion.amount}.00{' '}
+          {getName('base_code')} =
         </p>
         <p className="output-target">
           {currencyConversion && getNumber()[0]}

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as M from '@mui/material';
-import Header from '../Header/Header';
+import CurrencyHeader from '../CurrencyHeader/CurrencyHeader';
 import CurrencyBox from '../CurrencyBox/CurrencyBox';
 import './App.css';
 
@@ -14,10 +14,10 @@ function App() {
           height: '100vh',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
+          justifyContent: 'flex-start',
         }}
       >
-        <Header />
+        <CurrencyHeader />
         <CurrencyBox />
       </M.Container>
     </div>

@@ -40,7 +40,7 @@ function CurrencyBox() {
             </M.Grid>
           </M.Grid>
         </M.Box>
-        <CurrencyOutput amount={amount} />
+        <CurrencyOutput />
       </M.Box>
     </M.Box>
   );

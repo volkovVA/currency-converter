@@ -1,6 +1,11 @@
 .wrapper {
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.3) 0 100%),
-    url('../../assets/2.png');
-  background-repeat: no-repeat;
-  background-size: contain;
+  background: #ada996;
+  background: -webkit-linear-gradient(
+    to top,
+    #eaeaea,
+    #dbdbdb,
+    #f2f2f2,
+    #ada996
+  );
+  background: linear-gradient(to top, #eaeaea, #dbdbdb, #f2f2f2, #ada996);
 }

@@ -12,16 +12,15 @@ const CurrencyButton = ({ base, target, amount }) => {
   };
 
   return (
-    <div>
-      <M.Button
-        variant="contained"
-        size="large"
-        endIcon={<CurrencyExchangeIcon />}
-        onClick={getCurrency}
-      >
-        Convert
-      </M.Button>
-    </div>
+    <M.Button
+      variant="contained"
+      size="large"
+      endIcon={<CurrencyExchangeIcon />}
+      onClick={getCurrency}
+      sx={{ mt: 2 }}
+    >
+      Convert
+    </M.Button>
   );
 };
 

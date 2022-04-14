@@ -1,0 +1,46 @@
+.output .output-base {
+  margin: 0;
+  line-height: 1.7;
+  font-size: 1.3rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #5c667b;
+}
+
+.output .output-target {
+  margin-bottom: 24px;
+  line-height: 1.7;
+  font-size: 2.3rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #2e3c57;
+}
+
+.output .output-target .output-number {
+  color: #8f99ac;
+}
+
+.output .output-one {
+  margin-right: 12px;
+}
+
+.output .output-one p {
+  margin-bottom: 0;
+  line-height: 1.8;
+}
+
+.output .output-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.output .output-date {
+  margin-top: 12px;
+  font-size: 0.9rem;
+}
+
+.output .output-date span {
+  color: #006fe8;
+}

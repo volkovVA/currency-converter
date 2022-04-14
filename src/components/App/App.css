@@ -1,0 +1,6 @@
+.wrapper {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.3) 0 100%),
+    url('../../assets/2.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}

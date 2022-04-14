@@ -21,7 +21,6 @@ function AutocompleteBase({ currency, setSymbol, setBase }) {
 
   return (
     <M.Autocomplete
-      sx={{ width: 500 }}
       options={currency}
       getOptionLabel={(option) =>
         `${option.currency.code} — ${option.currency.name}`

@@ -3,7 +3,7 @@ import * as M from '@mui/material';
 
 function CurrencyAmount({ symbol, setAmount }) {
   return (
-    <M.FormControl>
+    <M.FormControl sx={{ width: 120 }}>
       <M.InputLabel htmlFor="outlined-adornment-amount">Amount</M.InputLabel>
       <M.OutlinedInput
         id="outlined-adornment-amount"

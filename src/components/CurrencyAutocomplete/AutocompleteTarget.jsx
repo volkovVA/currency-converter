@@ -20,7 +20,6 @@ function AutocompleteTarget({ currency, setTarget }) {
   }
   return (
     <M.Autocomplete
-      sx={{ width: 500 }}
       options={currency}
       getOptionLabel={(option) =>
         `${option.currency.code} — ${option.currency.name}`

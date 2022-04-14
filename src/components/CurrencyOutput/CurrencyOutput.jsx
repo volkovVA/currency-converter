@@ -1,11 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import './CurrencyOutput.css';
 
 function CurrencyOutput({ amount }) {
   const { currencySupported, currencyConversion, loadingConversion } =
     useSelector((state) => state.currency);
-
-  console.log(currencyConversion);
 
   const getName = (code) => {
     if (currencySupported && currencyConversion) {
@@ -26,46 +25,44 @@ function CurrencyOutput({ amount }) {
     }
   };
 
-  console.log(getNumber());
-
   return (
-    <div>
+    <div className="output">
       <div>
-        <span>{amount}.00&nbsp;</span>
-        <span>{getName('base_code')}&nbsp;=</span>
-      </div>
-      <div>
-        <span>{currencyConversion && getNumber()[0]}</span>
-        <span>{currencyConversion && getNumber()[1]}&nbsp;</span>
-        <span>{getName('target_code')}</span>
-      </div>
-      <div>
-        <span>1 {currencyConversion && currencyConversion.base_code} =</span>
-        <div>
-          <span>
-            {currencyConversion && currencyConversion.conversion_rate}
+        <p className="output-base">
+          {amount}.00 {getName('base_code')} =
+        </p>
+        <p className="output-target">
+          {currencyConversion && getNumber()[0]}
+          <span className="output-number">
+            {currencyConversion && getNumber()[1]}{' '}
           </span>
-          <span>{currencyConversion && currencyConversion.target_code}</span>
-        </div>
+          {getName('target_code')}
+        </p>
       </div>
-      <div>
-        <span>1 {currencyConversion && currencyConversion.target_code} =</span>
-        <div>
-          <span>
+      <div className="output-info">
+        <div className="output-one">
+          <p>
+            1 {currencyConversion && currencyConversion.base_code} ={' '}
             {currencyConversion &&
-              (1 / currencyConversion.conversion_rate).toFixed(6)}
-          </span>
-          <span>{currencyConversion && currencyConversion.base_code}</span>
+              currencyConversion.conversion_rate.toFixed(4)}{' '}
+            {currencyConversion && currencyConversion.target_code}
+          </p>
+          <p>
+            1 {currencyConversion && currencyConversion.target_code} ={' '}
+            {currencyConversion &&
+              (1 / currencyConversion.conversion_rate).toFixed(4)}{' '}
+            {currencyConversion && currencyConversion.base_code}
+          </p>
         </div>
-      </div>
-      <div>
-        {getName('base_code')} to {getName('target_code')} conversion — Last
-        updated{' '}
-        {currencyConversion &&
-          currencyConversion.time_next_update_utc
-            .split(' ')
-            .slice(0, -1)
-            .join(' ')}
+        <div className="output-date">
+          <span>{getName('base_code')}</span> to
+          <span> {getName('target_code')}</span> conversion — Last updated
+          {currencyConversion &&
+            currencyConversion.time_next_update_utc
+              .split(' ')
+              .slice(0, -1)
+              .join(' ')}
+        </div>
       </div>
     </div>
   );

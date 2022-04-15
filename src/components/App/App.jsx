@@ -2,6 +2,7 @@ import React from 'react';
 import * as M from '@mui/material';
 import CurrencyHeader from '../CurrencyHeader/CurrencyHeader';
 import CurrencyBox from '../CurrencyBox/CurrencyBox';
+import CurrencyTables from '../CurrencyTables/CurrencyTables';
 import './App.css';
 
 function App() {
@@ -11,7 +12,6 @@ function App() {
       <M.Container
         maxWidth="md"
         sx={{
-          height: '100vh',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'flex-start',
@@ -19,6 +19,7 @@ function App() {
       >
         <CurrencyHeader />
         <CurrencyBox />
+        <CurrencyTables />
       </M.Container>
     </div>
   );

@@ -15,6 +15,7 @@ function CurrencyBox() {
   return (
     <M.Box
       sx={{
+        mb: 6,
         border: '1px solid #ccc',
         borderRadius: '8px',
         boxShadow: 'rgb(35 55 80 / 30%) 0px 6px 12px',

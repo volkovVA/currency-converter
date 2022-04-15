@@ -1,4 +1,5 @@
 .wrapper {
+  min-height: 100vh;
   background: #ada996;
   background: -webkit-linear-gradient(
     to top,

@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import * as M from '@mui/material';
 import CurrencyTabs from '../CurrencyTabs/CurrencyTabs';
 import CurrencyConverter from '../CurrencyConverter/CurrencyConverter';
-import CurrencyHistoricalData from '../CurrencyHistoricalData/CurrencyHistoricalData';
+import ExchangeRate from '../ExchangeRate/ExchangeRate';
 
 function CurrencyBox() {
   return (
@@ -19,7 +19,7 @@ function CurrencyBox() {
         <CurrencyTabs />
         <Routes>
           <Route path="/" element={<CurrencyConverter />} />
-          <Route path="/historical" element={<CurrencyHistoricalData />} />
+          <Route path="/exchange" element={<ExchangeRate />} />
         </Routes>
       </BrowserRouter>
     </M.Box>

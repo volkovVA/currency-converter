@@ -28,8 +28,8 @@ function CurrencyTabs() {
     >
       <M.Tab label="Converter" to="/" component={Link} className="link" />
       <M.Tab
-        label="Historical Data"
-        to="/historical"
+        label="Exchange Rate"
+        to="/exchange"
         component={Link}
         className="link"
       />

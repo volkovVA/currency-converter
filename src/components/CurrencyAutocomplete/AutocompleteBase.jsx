@@ -27,8 +27,8 @@ function AutocompleteBase({ currency, setSymbol, setBase }) {
       }
       onChange={(_, value) => {
         setInputImage(value);
-        setSymbol(value);
-        setBase(value);
+        setSymbol && setSymbol(value);
+        setBase && setBase(value);
       }}
       renderOption={(props, option) => (
         <M.Box

@@ -14,7 +14,7 @@ function CurrencyConverter() {
 
   return (
     <M.Box sx={{ p: 3 }}>
-      <M.Box component="form" sx={{ mb: 8 }}>
+      <M.Box component="form">
         <M.Grid container spacing={1}>
           <M.Grid item xs={12} sm>
             <CurrencyAmount symbol={symbol} setAmount={setAmount} />

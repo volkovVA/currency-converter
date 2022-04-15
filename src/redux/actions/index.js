@@ -31,6 +31,20 @@ const conversionFailure = (error) => ({
   payload: error,
 });
 
+const rateRequested = () => ({
+  type: types.FETCH_EXCHANGERATE_REQUEST,
+});
+
+const rateLoaded = (data) => ({
+  type: types.FETCH_EXCHANGERATE_SUCCESS,
+  payload: data,
+});
+
+const rateFailure = (error) => ({
+  type: types.FETCH_EXCHANGERATE_FAILURE,
+  payload: error,
+});
+
 const fetchCurrency = () => async (dispatch) => {
   dispatch(currencyRequested());
   const data = await currencyService.getCurrency();
@@ -52,4 +66,24 @@ const fetchConversion = (base, target, amount) => async (dispatch) => {
   }
 };
 
-export { fetchCurrency, fetchConversion };
+const today = new Date();
+const dd = String(today.getDate()).padStart(2, '0');
+const mm = String(today.getMonth() + 1).padStart(2, '0');
+const yyyy = today.getFullYear();
+
+const fetchExchangeRate = (base, year, month, day) => async (dispatch) => {
+  dispatch(rateRequested());
+  const data = await currencyService.fetchExchangeRate(
+    base,
+    (year = yyyy),
+    (month = mm),
+    (day = dd)
+  );
+  try {
+    dispatch(rateLoaded(data));
+  } catch (error) {
+    dispatch(rateFailure());
+  }
+};
+
+export { fetchCurrency, fetchConversion, fetchExchangeRate };

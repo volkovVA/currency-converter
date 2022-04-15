@@ -4,8 +4,10 @@ import * as types from '../constants';
 const initialState = {
   currencySupported: null,
   currencyConversion: null,
+  currencyExchangeRate: null,
   loadingCurrency: true,
   loadingConversion: true,
+  loadingExchangeRate: true,
   error: null,
 };
 
@@ -53,6 +55,29 @@ const currencyReducer = (state = initialState, action) => {
       return {
         ...state,
         loadingConversion: false,
+        error: action.payload,
+      };
+    }
+
+    case types.FETCH_EXCHANGERATE_REQUEST: {
+      return {
+        ...state,
+        loadingExchangeRate: true,
+      };
+    }
+
+    case types.FETCH_EXCHANGERATE_SUCCESS: {
+      return {
+        ...state,
+        currencyExchangeRate: action.payload,
+        loadingExchangeRate: false,
+      };
+    }
+
+    case types.FETCH_EXCHANGERATE_FAILURE: {
+      return {
+        ...state,
+        loadingExchangeRate: false,
         error: action.payload,
       };
     }

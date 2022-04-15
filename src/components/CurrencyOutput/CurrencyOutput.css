@@ -1,3 +1,7 @@
+.output {
+  margin-bottom: 2rem;
+}
+
 .output .output-base {
   margin: 0;
   line-height: 1.7;

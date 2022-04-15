@@ -1,19 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import * as M from '@mui/material';
 import './CurrencyTabs.css';
-
-function LinkTab(props) {
-  return (
-    <M.Tab
-      component="a"
-      onClick={(event) => {
-        event.preventDefault();
-      }}
-      {...props}
-      className="link"
-    />
-  );
-}
 
 function CurrencyTabs() {
   const [value, setValue] = useState(0);
@@ -38,8 +26,13 @@ function CurrencyTabs() {
         borderTopRightRadius: '8px',
       }}
     >
-      <LinkTab label="Page One" href="/drafts" />
-      <LinkTab label="Page Two" href="/trash" />
+      <M.Tab label="Converter" to="/" component={Link} className="link" />
+      <M.Tab
+        label="Historical Data"
+        to="/historical"
+        component={Link}
+        className="link"
+      />
     </M.Tabs>
   );
 }

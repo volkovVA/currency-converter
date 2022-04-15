@@ -11,7 +11,15 @@ function CurrencyTable({
   rows,
 }) {
   return (
-    <M.TableContainer component={M.Paper} sx={{ width: '44%', p: 1 }}>
+    <M.TableContainer
+      component={M.Paper}
+      sx={{
+        width: '44%',
+        p: 1,
+        borderRadius: '8px',
+        boxShadow: 'rgb(35 55 80 / 30%) 0px 6px 12px',
+      }}
+    >
       <M.Table size="small" aria-label="a dense table">
         <M.TableHead>
           <M.TableRow>

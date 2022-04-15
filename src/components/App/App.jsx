@@ -15,11 +15,11 @@ function App() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'flex-start',
+          padding: '3rem 0',
         }}
       >
         <CurrencyHeader />
         <CurrencyBox />
-        <CurrencyTables />
       </M.Container>
     </div>
   );

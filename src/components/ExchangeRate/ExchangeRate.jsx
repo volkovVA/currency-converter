@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as M from '@mui/material';
 import HistoryIcon from '@mui/icons-material/History';
-import { fetchExchangeRate } from '../../redux/actions';
+import { fetchExchangeRate, fetchCurrency } from '../../redux/actions';
 import Autocomplete from '../Autocomplete/Autocomplete';
 import ExchangeRateItem from './ExchangeRateItem';
 import classes from './ExchangeRate.module.css';
@@ -24,6 +24,12 @@ const ExchangeRate = () => {
 
   const { currencySupported, currencyExchangeRate, loadingCurrency } =
     useSelector((state) => state.currency);
+
+  useEffect(() => {
+    if (!currencySupported) {
+      dispatch(fetchCurrency());
+    }
+  }, [currencySupported, dispatch]);
 
   const getExchangeRate = () => {
     dispatch(
@@ -80,6 +86,7 @@ const ExchangeRate = () => {
             endIcon={<HistoryIcon />}
             onClick={getExchangeRate}
             sx={{ mt: 2 }}
+            disabled={!Boolean(base)}
           >
             get rate
           </M.Button>

@@ -21,7 +21,12 @@ function CurrencyTabs() {
       className={classes.tabs}
       sx={{ mb: 2 }}
     >
-      <M.Tab label="Converter" to="/" component={Link} className="link" />
+      <M.Tab
+        label="Converter"
+        to="/"
+        component={Link}
+        className={classes.tabsLink}
+      />
       <M.Tab
         label="Exchange Rate"
         to="/exchange"

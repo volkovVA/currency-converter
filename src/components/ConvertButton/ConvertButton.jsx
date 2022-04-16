@@ -18,6 +18,7 @@ const ConvertButton = ({ base, target, amount }) => {
       endIcon={<CurrencyExchangeIcon />}
       onClick={getCurrency}
       sx={{ mt: 2 }}
+      disabled={!(!!base && !!target && !!amount)}
     >
       Convert
     </M.Button>

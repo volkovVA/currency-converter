@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as M from '@mui/material';
 import HistoryIcon from '@mui/icons-material/History';
 import { fetchExchangeRate } from '../../redux/actions';
-import AutocompleteBase from '../CurrencyAutocomplete/AutocompleteBase';
+import AutocompleteBase from '../Autocomplete/AutocompleteBase';
 import ExchangeRateItem from './ExchangeRateItem';
+import classes from './ExchangeRate.module.css';
 
 const ExchangeRate = () => {
   const getCurrentDate = () => {
@@ -86,25 +87,14 @@ const ExchangeRate = () => {
       </M.Grid>
       {currencyExchangeRate ? (
         <M.Box>
-          <h1
-            style={{
-              fontSize: '2rem',
-              textAlign: 'center',
-              marginBottom: '1rem',
-            }}
-          >
+          <h1 className={classes.rateTitle}>
             Exchange Rate: 1 {currencyExchangeRate.base_code}
             {', '}
             {currencyExchangeRate.month}/{currencyExchangeRate.day}/
             {currencyExchangeRate.year}
           </h1>
           <M.List
-            sx={{
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'center',
-              flexWrap: 'wrap',
-            }}
+            className={classes.rateList}
             component="nav"
             aria-labelledby="nested-list-subheader"
           >

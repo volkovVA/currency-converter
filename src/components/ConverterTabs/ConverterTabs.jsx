@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as M from '@mui/material';
-import './CurrencyTabs.css';
+import classes from './ConverterTabs.module.css';
 
 function CurrencyTabs() {
   const [value, setValue] = useState(0);
@@ -18,20 +18,15 @@ function CurrencyTabs() {
       indicatorColor="secondary"
       textColor="inherit"
       variant="fullWidth"
-      sx={{
-        mb: 2,
-        backgroundColor: '#1976d2',
-        color: '#fff',
-        borderTopLeftRadius: '8px',
-        borderTopRightRadius: '8px',
-      }}
+      className={classes.tabs}
+      sx={{ mb: 2 }}
     >
       <M.Tab label="Converter" to="/" component={Link} className="link" />
       <M.Tab
         label="Exchange Rate"
         to="/exchange"
         component={Link}
-        className="link"
+        className={classes.tabsLink}
       />
     </M.Tabs>
   );

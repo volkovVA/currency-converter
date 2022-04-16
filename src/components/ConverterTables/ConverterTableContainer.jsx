@@ -1,9 +1,9 @@
 import React from 'react';
 import * as M from '@mui/material';
 import { useSelector } from 'react-redux';
-import CurrencyTable from './CurrencyTable';
+import ConverterTable from './ConverterTable';
 
-const CurrencyTables = () => {
+const ConverterTableContainer = () => {
   const { currencySupported, currencyConversion } = useSelector(
     (state) => state.currency
   );
@@ -69,7 +69,7 @@ const CurrencyTables = () => {
   if (currencyConversion) {
     return (
       <M.Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-        <CurrencyTable
+        <ConverterTable
           leftName={getName('base_code')}
           leftFlag={getIsoCode(currencyConversion.base_code)}
           rightName={getName('target_code')}
@@ -78,7 +78,7 @@ const CurrencyTables = () => {
           rightCode={currencyConversion.target_code}
           rows={baseRows}
         />
-        <CurrencyTable
+        <ConverterTable
           leftName={getName('target_code')}
           leftFlag={getIsoCode(currencyConversion.target_code)}
           rightName={getName('base_code')}
@@ -92,4 +92,4 @@ const CurrencyTables = () => {
   }
 };
 
-export default CurrencyTables;
+export default ConverterTableContainer;

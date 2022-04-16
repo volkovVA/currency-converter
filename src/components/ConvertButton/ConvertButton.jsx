@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import * as M from '@mui/material';
-import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import { fetchConversion } from '../../redux/actions';
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 
-const CurrencyButton = ({ base, target, amount }) => {
+const ConvertButton = ({ base, target, amount }) => {
   const dispatch = useDispatch();
 
   const getCurrency = () => {
@@ -24,4 +24,4 @@ const CurrencyButton = ({ base, target, amount }) => {
   );
 };
 
-export default CurrencyButton;
+export default ConvertButton;

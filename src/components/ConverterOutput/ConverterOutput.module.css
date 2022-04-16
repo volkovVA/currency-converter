@@ -3,7 +3,7 @@
   margin-bottom: 2rem;
 }
 
-.output .output-base {
+.output .outputBase {
   margin: 0;
   line-height: 1.7;
   font-size: 1.3rem;
@@ -12,7 +12,7 @@
   color: #5c667b;
 }
 
-.output .output-target {
+.output .outputTarget {
   margin-bottom: 24px;
   line-height: 1.7;
   font-size: 2.3rem;
@@ -21,31 +21,31 @@
   color: #2e3c57;
 }
 
-.output .output-target .output-number {
+.output .outputTarget .outputNumber {
   color: #8f99ac;
 }
 
-.output .output-one {
+.output .outputOne {
   margin-right: 12px;
 }
 
-.output .output-one p {
+.output .outputOne p {
   margin-bottom: 0;
   line-height: 1.8;
 }
 
-.output .output-info {
+.output .outputInfo {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   flex-wrap: wrap;
 }
 
-.output .output-date {
+.output .outputDate {
   margin-top: 12px;
   font-size: 0.9rem;
 }
 
-.output .output-date span {
+.output .outputDate span {
   color: #006fe8;
 }

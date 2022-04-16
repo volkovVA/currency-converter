@@ -1,7 +1,7 @@
 import React from 'react';
 import * as M from '@mui/material';
 
-function CurrencyTable({
+function ConverterTable({
   leftName,
   leftFlag,
   rightName,
@@ -14,13 +14,14 @@ function CurrencyTable({
     <M.TableContainer
       component={M.Paper}
       sx={{
-        width: '44%',
         p: 1,
+        width: '44%',
+        border: '1px solid #ccc',
         borderRadius: '8px',
         boxShadow: 'rgb(35 55 80 / 30%) 0px 6px 12px',
       }}
     >
-      <M.Table size="small" aria-label="a dense table">
+      <M.Table size="small">
         <M.TableHead>
           <M.TableRow>
             <M.TableCell
@@ -71,4 +72,4 @@ function CurrencyTable({
   );
 }
 
-export default CurrencyTable;
+export default ConverterTable;

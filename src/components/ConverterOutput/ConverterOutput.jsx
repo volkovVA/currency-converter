@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import './CurrencyOutput.css';
+import classes from './ConverterOutput.module.css';
 
-function CurrencyOutput() {
+function ConverterOutput() {
   const { currencySupported, currencyConversion } = useSelector(
     (state) => state.currency
   );
@@ -27,19 +27,19 @@ function CurrencyOutput() {
 
   if (currencyConversion) {
     return (
-      <div className="output">
+      <div className={classes.output}>
         <div>
-          <p className="output-base">
+          <p className={classes.outputBase}>
             {currencyConversion.amount}.00&nbsp;{getName('base_code')}&nbsp;=
           </p>
-          <p className="output-target">
+          <p className={classes.outputTarget}>
             {getNumber()[0]}.{getNumber()[1]}
-            <span className="output-number">{getNumber()[2]}&nbsp;</span>
+            <span className={classes.outputNumber}>{getNumber()[2]}&nbsp;</span>
             {getName('target_code')}
           </p>
         </div>
-        <div className="output-info">
-          <div className="output-one">
+        <div className={classes.outputInfo}>
+          <div className={classes.outputOne}>
             <p>
               1&nbsp;{currencyConversion.base_code}&nbsp;=&nbsp;
               {currencyConversion.conversion_rate.toFixed(4)}&nbsp;
@@ -51,7 +51,7 @@ function CurrencyOutput() {
               {currencyConversion.base_code}
             </p>
           </div>
-          <div className="output-date">
+          <div className={classes.outputDate}>
             <span>{getName('base_code')} </span>to
             <span> {getName('target_code')}</span> conversion — Last updated
             {currencyConversion.time_next_update_utc
@@ -65,4 +65,4 @@ function CurrencyOutput() {
   }
 }
 
-export default CurrencyOutput;
+export default ConverterOutput;

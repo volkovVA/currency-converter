@@ -31,7 +31,7 @@ export default class CurrencyService {
     return result.json();
   };
 
-  fetchExchangeRate = async (base, year, month, day) => {
+  getExchangeRate = async (base, year, month, day) => {
     const result = await fetch(
       `${this.apiBase}/${this.apiKey}/history/${base}/${year}/${month}/${day}`
     );

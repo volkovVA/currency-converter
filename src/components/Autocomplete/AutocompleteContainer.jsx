@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import * as M from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrency } from '../../redux/actions';
-
 import AutocompleteBase from './AutocompleteBase';
 import AutocompleteTarget from './AutocompleteTarget';
 

@@ -10,3 +10,10 @@
   );
   background: linear-gradient(to top, #eaeaea, #dbdbdb, #f2f2f2, #ada996);
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 3rem 0;
+}

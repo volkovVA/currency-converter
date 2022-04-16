@@ -1,24 +1,15 @@
 import React from 'react';
 import * as M from '@mui/material';
-import CurrencyHeader from '../CurrencyHeader/CurrencyHeader';
+import Header from '../Header/Header';
 import CurrencyBox from '../CurrencyBox/CurrencyBox';
-import CurrencyTables from '../CurrencyTables/CurrencyTables';
-import './App.css';
+import classes from './App.module.css';
 
 function App() {
   return (
-    <div className="wrapper">
+    <div className={classes.wrapper}>
       <M.CssBaseline />
-      <M.Container
-        maxWidth="md"
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-start',
-          padding: '3rem 0',
-        }}
-      >
-        <CurrencyHeader />
+      <M.Container maxWidth="md" className={classes.container}>
+        <Header />
         <CurrencyBox />
       </M.Container>
     </div>

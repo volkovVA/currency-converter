@@ -73,7 +73,7 @@ const yyyy = today.getFullYear();
 
 const fetchExchangeRate = (base, year, month, day) => async (dispatch) => {
   dispatch(rateRequested());
-  const data = await currencyService.fetchExchangeRate(
+  const data = await currencyService.getExchangeRate(
     base,
     (year = yyyy),
     (month = mm),

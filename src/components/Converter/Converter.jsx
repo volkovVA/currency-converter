@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import * as M from '@mui/material';
-import CurrencyAmount from '../CurrencyAmount/CurrencyAmount';
-import AutocompleteContainer from '../CurrencyAutocomplete/AutocompleteContainer';
-import CurrencyButton from '../CurrencyButton/CurrencyButton';
-import CurrencyOutput from '../CurrencyOutput/CurrencyOutput';
-import CurrencyTables from '../CurrencyTables/CurrencyTables';
+import Amount from '../Amount/Amount';
+import AutocompleteContainer from '../Autocomplete/AutocompleteContainer';
+import ConvertButton from '../ConvertButton/ConvertButton';
+import ConverterOutput from '../ConverterOutput/ConverterOutput';
+import ConverterTableContainer from '../ConverterTables/ConverterTableContainer';
 
 function CurrencyConverter() {
   const [base, setBase] = useState('');
@@ -17,7 +17,7 @@ function CurrencyConverter() {
       <M.Box component="form">
         <M.Grid container spacing={1}>
           <M.Grid item xs={12} sm>
-            <CurrencyAmount symbol={symbol} setAmount={setAmount} />
+            <Amount symbol={symbol} setAmount={setAmount} />
           </M.Grid>
           <M.Grid item xs={12} sm={10} md={10}>
             <AutocompleteContainer
@@ -27,12 +27,12 @@ function CurrencyConverter() {
             />
           </M.Grid>
           <M.Grid item xs={12} sm>
-            <CurrencyButton base={base} target={target} amount={amount} />
+            <ConvertButton base={base} target={target} amount={amount} />
           </M.Grid>
         </M.Grid>
       </M.Box>
-      <CurrencyOutput />
-      <CurrencyTables />
+      <ConverterOutput />
+      <ConverterTableContainer />
     </M.Box>
   );
 }

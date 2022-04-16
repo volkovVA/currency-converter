@@ -1,7 +1,7 @@
 import React from 'react';
 import * as M from '@mui/material';
 
-function CurrencyAmount({ symbol, setAmount }) {
+function Amount({ symbol, setAmount }) {
   return (
     <M.FormControl sx={{ width: 120 }}>
       <M.InputLabel htmlFor="outlined-adornment-amount">Amount</M.InputLabel>
@@ -22,4 +22,4 @@ function CurrencyAmount({ symbol, setAmount }) {
   );
 }
 
-export default CurrencyAmount;
+export default Amount;

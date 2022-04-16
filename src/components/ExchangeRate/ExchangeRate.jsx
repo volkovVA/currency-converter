@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import * as M from '@mui/material';
 import HistoryIcon from '@mui/icons-material/History';
 import { fetchExchangeRate } from '../../redux/actions';
-import AutocompleteBase from '../Autocomplete/AutocompleteBase';
+import Autocomplete from '../Autocomplete/Autocomplete';
 import ExchangeRateItem from './ExchangeRateItem';
 import classes from './ExchangeRate.module.css';
 
@@ -55,7 +55,7 @@ const ExchangeRate = () => {
     <M.Box sx={{ p: 3 }}>
       <M.Grid container rowSpacing={2} spacing={1} sx={{ mb: 6 }}>
         <M.Grid item xs={12} sm={12} md={6}>
-          <AutocompleteBase currency={currencySupported} setBase={setBase} />
+          <Autocomplete currency={currencySupported} setBase={setBase} />
         </M.Grid>
         <M.Grid item xs={12} sm={12} md={6}>
           <M.TextField

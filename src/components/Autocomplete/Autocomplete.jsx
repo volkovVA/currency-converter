@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as M from '@mui/material';
 
-function AutocompleteTarget({ currency, setTarget }) {
+function Autocomplete({ currency, setSymbol, setBase, setTarget }) {
   const [image, setImage] = useState('');
 
   const setInputImage = (value) =>
@@ -18,6 +18,7 @@ function AutocompleteTarget({ currency, setTarget }) {
       background: 'none',
     };
   }
+
   return (
     <M.Autocomplete
       options={currency}
@@ -26,7 +27,9 @@ function AutocompleteTarget({ currency, setTarget }) {
       }
       onChange={(_, value) => {
         setInputImage(value);
-        setTarget(value);
+        setSymbol && setSymbol(value);
+        setBase && setBase(value);
+        setTarget && setTarget(value);
       }}
       renderOption={(props, option) => (
         <M.Box
@@ -69,4 +72,4 @@ function AutocompleteTarget({ currency, setTarget }) {
   );
 }
 
-export default AutocompleteTarget;
+export default Autocomplete;

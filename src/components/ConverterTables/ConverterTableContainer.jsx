@@ -4,9 +4,8 @@ import { useSelector } from 'react-redux';
 import ConverterTable from './ConverterTable';
 
 const ConverterTableContainer = () => {
-  const { currencySupported, currencyConversion } = useSelector(
-    (state) => state.currency
-  );
+  const { currencySupported, currencyConversion, loadingConversion } =
+    useSelector((state) => state.currency);
 
   const createData = (name, calories) => {
     return { name, calories };
@@ -66,7 +65,7 @@ const ConverterTableContainer = () => {
     createData(50000, getTargetNumber(50000)),
   ];
 
-  if (currencyConversion) {
+  if (!loadingConversion) {
     return (
       <M.Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
         <ConverterTable

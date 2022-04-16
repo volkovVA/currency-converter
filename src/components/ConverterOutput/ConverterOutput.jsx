@@ -3,9 +3,8 @@ import { useSelector } from 'react-redux';
 import classes from './ConverterOutput.module.css';
 
 function ConverterOutput() {
-  const { currencySupported, currencyConversion } = useSelector(
-    (state) => state.currency
-  );
+  const { currencySupported, currencyConversion, loadingConversion } =
+    useSelector((state) => state.currency);
 
   const getName = (code) => {
     return currencySupported.find(
@@ -25,7 +24,7 @@ function ConverterOutput() {
     return [number1, number2, number3];
   };
 
-  if (currencyConversion) {
+  if (!loadingConversion) {
     return (
       <div className={classes.output}>
         <div>

@@ -22,8 +22,12 @@ const ExchangeRate = () => {
   const [value, setValue] = useState('');
   const [date, setDate] = useState(getCurrentDate());
 
-  const { currencySupported, currencyExchangeRate, loadingCurrency } =
-    useSelector((state) => state.currency);
+  const {
+    currencySupported,
+    currencyExchangeRate,
+    loadingCurrency,
+    loadingExchangeRate,
+  } = useSelector((state) => state.currency);
 
   useEffect(() => {
     if (!currencySupported) {
@@ -43,7 +47,9 @@ const ExchangeRate = () => {
   };
 
   if (loadingCurrency) {
-    return <h1>Loading...</h1>;
+    return (
+      <M.CircularProgress sx={{ display: 'block', margin: '2rem auto' }} />
+    );
   }
 
   const getDetailCurrencyWithAmount = () => {
@@ -92,7 +98,7 @@ const ExchangeRate = () => {
           </M.Button>
         </M.Grid>
       </M.Grid>
-      {currencyExchangeRate ? (
+      {!loadingExchangeRate ? (
         <M.Box>
           <h1 className={classes.rateTitle}>
             Exchange Rate: 1 {currencyExchangeRate.base_code}

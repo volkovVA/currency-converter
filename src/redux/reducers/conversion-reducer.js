@@ -3,7 +3,7 @@ import * as types from '../constants';
 const initialState = {
   currencyConversion: null,
   loadingConversion: true,
-  error: null,
+  errorCurrencyConversion: null,
 };
 
 const conversionReducer = (state = initialState, action) => {
@@ -27,7 +27,7 @@ const conversionReducer = (state = initialState, action) => {
       return {
         ...state,
         loadingConversion: false,
-        error: action.payload,
+        errorCurrencyConversion: action.payload,
       };
     }
 

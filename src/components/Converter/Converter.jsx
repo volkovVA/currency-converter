@@ -7,6 +7,7 @@ import AutocompleteContainer from '../Autocomplete/AutocompleteContainer';
 import ConvertButton from '../ConvertButton/ConvertButton';
 import ConverterOutput from '../ConverterOutput/ConverterOutput';
 import ConverterTableContainer from '../ConverterTables/ConverterTableContainer';
+import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
 
 function Converter() {
   const dispatch = useDispatch();
@@ -15,15 +16,18 @@ function Converter() {
   const [symbol, setSymbol] = useState('');
   const [amount, setAmount] = useState('');
 
-  const { currencySupported, loadingCurrency } = useSelector(
-    (state) => state.currency
-  );
+  const { currencySupported, loadingCurrency, errorCurrencySupported } =
+    useSelector((state) => state.currency);
 
   useEffect(() => {
     if (!currencySupported) {
       dispatch(fetchCurrency());
     }
   }, [currencySupported, dispatch]);
+
+  if (errorCurrencySupported) {
+    return <ErrorIndicator />;
+  }
 
   if (loadingCurrency) {
     return (
@@ -34,7 +38,7 @@ function Converter() {
   return (
     <M.Box sx={{ p: 3 }}>
       <M.Box component="form">
-        <M.Grid container spacing={1}>
+        <M.Grid container rowSpacing={2} spacing={1}>
           <M.Grid item xs={12} sm>
             <Amount symbol={symbol} setAmount={setAmount} />
           </M.Grid>

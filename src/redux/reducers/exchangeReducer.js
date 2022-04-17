@@ -3,7 +3,7 @@ import * as types from '../constants';
 const initialState = {
   currencyExchangeRate: null,
   loadingExchangeRate: true,
-  error: null,
+  errorExchangeRate: null,
 };
 
 const exchangeReducer = (state = initialState, action) => {
@@ -27,7 +27,7 @@ const exchangeReducer = (state = initialState, action) => {
       return {
         ...state,
         loadingExchangeRate: false,
-        error: action.payload,
+        errorExchangeRate: action.payload,
       };
     }
 

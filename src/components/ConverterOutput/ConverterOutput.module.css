@@ -1,23 +1,23 @@
 .output {
-  margin-top: 2rem;
+  margin-top: 3rem;
   margin-bottom: 2rem;
 }
 
 .output .outputBase {
-  margin: 0;
-  line-height: 1.7;
+  margin-bottom: 10px;
+  line-height: 1.2;
   font-size: 1.3rem;
   font-weight: 600;
-  white-space: nowrap;
   color: #5c667b;
 }
 
 .output .outputTarget {
+  display: flex;
+  flex-wrap: wrap;
   margin-bottom: 24px;
-  line-height: 1.7;
+  line-height: 1.2;
   font-size: 2.3rem;
   font-weight: 600;
-  white-space: nowrap;
   color: #2e3c57;
 }
 

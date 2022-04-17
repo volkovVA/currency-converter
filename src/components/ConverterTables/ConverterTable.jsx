@@ -15,7 +15,8 @@ function ConverterTable({
       component={M.Paper}
       sx={{
         p: 1,
-        width: '44%',
+        m: 1,
+        width: '23rem',
         border: '1px solid #ccc',
         borderRadius: '8px',
         boxShadow: 'rgb(35 55 80 / 30%) 0px 6px 12px',

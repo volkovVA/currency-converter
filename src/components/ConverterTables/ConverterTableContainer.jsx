@@ -2,12 +2,14 @@ import React from 'react';
 import * as M from '@mui/material';
 import { useSelector } from 'react-redux';
 import ConverterTable from './ConverterTable';
+import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
 
 const ConverterTableContainer = () => {
-  const { currencySupported } = useSelector((state) => state.currency);
-  const { currencyConversion, loadingConversion } = useSelector(
-    (state) => state.conversion
+  const { currencySupported, errorCurrencySupported } = useSelector(
+    (state) => state.currency
   );
+  const { currencyConversion, loadingConversion, errorCurrencyConversion } =
+    useSelector((state) => state.conversion);
 
   const createData = (name, calories) => {
     return { name, calories };
@@ -26,17 +28,13 @@ const ConverterTableContainer = () => {
   };
 
   const getIsoCode = (code) => {
-    if (currencySupported && currencyConversion) {
-      return currencySupported.find((el) => el.currency.code === code).isoCode;
-    }
+    return currencySupported.find((el) => el.currency.code === code).isoCode;
   };
 
   const getName = (code) => {
-    if (currencySupported && currencyConversion) {
-      return currencySupported.find(
-        (el) => el.currency.code === currencyConversion[code]
-      ).currency.name;
-    }
+    return currencySupported.find(
+      (el) => el.currency.code === currencyConversion[code]
+    ).currency.name;
   };
 
   const baseRows = [
@@ -67,9 +65,23 @@ const ConverterTableContainer = () => {
     createData(50000, getTargetNumber(50000)),
   ];
 
+  if (errorCurrencySupported) {
+    return <ErrorIndicator />;
+  }
+
+  if (errorCurrencyConversion) {
+    return <ErrorIndicator />;
+  }
+
   if (!loadingConversion) {
     return (
-      <M.Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+      <M.Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-around',
+          flexWrap: 'wrap',
+        }}
+      >
         <ConverterTable
           leftName={getName('base_code')}
           leftFlag={getIsoCode(currencyConversion.base_code)}

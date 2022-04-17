@@ -6,6 +6,7 @@ import { fetchExchangeRate, fetchCurrency } from '../../redux/actions';
 import Autocomplete from '../Autocomplete/Autocomplete';
 import ExchangeRateItem from './ExchangeRateItem';
 import Amount from '../Amount/Amount';
+import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
 import classes from './ExchangeRate.module.css';
 
 const ExchangeRate = () => {
@@ -25,12 +26,10 @@ const ExchangeRate = () => {
   const [search, setSeacrh] = useState('');
   const [date, setDate] = useState(getCurrentDate());
 
-  const { currencySupported, loadingCurrency } = useSelector(
-    (state) => state.currency
-  );
-  const { currencyExchangeRate, loadingExchangeRate } = useSelector(
-    (state) => state.exchange
-  );
+  const { currencySupported, loadingCurrency, errorCurrencySupported } =
+    useSelector((state) => state.currency);
+  const { currencyExchangeRate, loadingExchangeRate, errorExchangeRate } =
+    useSelector((state) => state.exchange);
 
   useEffect(() => {
     if (!currencySupported) {
@@ -49,6 +48,14 @@ const ExchangeRate = () => {
       )
     );
   };
+
+  if (errorCurrencySupported) {
+    return <ErrorIndicator />;
+  }
+
+  if (errorExchangeRate) {
+    return <ErrorIndicator />;
+  }
 
   if (loadingCurrency) {
     return (
@@ -73,7 +80,7 @@ const ExchangeRate = () => {
 
   return (
     <M.Box sx={{ p: 3 }}>
-      <M.Grid container rowSpacing={2} spacing={1}>
+      <M.Grid container rowSpacing={2} spacing={1} sx={{ mb: 6 }}>
         <M.Grid item xs={12} sm={12} md={6}>
           <Autocomplete currency={currencySupported} setBase={setBase} />
         </M.Grid>
@@ -122,7 +129,7 @@ const ExchangeRate = () => {
         </M.Grid>
       </M.Grid>
       {!loadingExchangeRate ? (
-        <M.Box sx={{ marginTop: '2rem' }}>
+        <M.Box>
           <h1 className={classes.rateTitle}>
             Exchange Rate: {currencyExchangeRate.requested_amount}{' '}
             {currencyExchangeRate.base_code}

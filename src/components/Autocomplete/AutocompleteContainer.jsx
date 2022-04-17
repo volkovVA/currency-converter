@@ -9,7 +9,7 @@ const AutocompleteContainer = ({
   setTarget,
 }) => {
   return (
-    <M.Grid container spacing={1}>
+    <M.Grid container rowSpacing={2} spacing={1}>
       <M.Grid item xs={12} sm={12} md={6}>
         <Autocomplete
           currency={currencySupported}

@@ -1,14 +1,8 @@
 .wrapper {
   min-height: 100vh;
-  background: #ada996;
-  background: -webkit-linear-gradient(
-    to top,
-    #eaeaea,
-    #dbdbdb,
-    #f2f2f2,
-    #ada996
-  );
-  background: linear-gradient(to top, #eaeaea, #dbdbdb, #f2f2f2, #ada996);
+  background: #c9d6ff;
+  background: -webkit-linear-gradient(to right, #e2e2e2, #c9d6ff);
+  background: linear-gradient(to right, #e2e2e2, #c9d6ff);
 }
 
 .container {

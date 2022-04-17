@@ -1,12 +1,14 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
 import classes from './ConverterOutput.module.css';
 
 function ConverterOutput() {
-  const { currencySupported } = useSelector((state) => state.currency);
-  const { currencyConversion, loadingConversion } = useSelector(
-    (state) => state.conversion
+  const { currencySupported, errorCurrencySupported } = useSelector(
+    (state) => state.currency
   );
+  const { currencyConversion, loadingConversion, errorCurrencyConversion } =
+    useSelector((state) => state.conversion);
 
   const getName = (code) => {
     return currencySupported.find(
@@ -25,6 +27,14 @@ function ConverterOutput() {
 
     return [number1, number2, number3];
   };
+
+  if (errorCurrencySupported) {
+    return <ErrorIndicator />;
+  }
+
+  if (errorCurrencyConversion) {
+    return <ErrorIndicator />;
+  }
 
   if (!loadingConversion) {
     return (

@@ -3,8 +3,10 @@ import { useSelector } from 'react-redux';
 import classes from './ConverterOutput.module.css';
 
 function ConverterOutput() {
-  const { currencySupported, currencyConversion, loadingConversion } =
-    useSelector((state) => state.currency);
+  const { currencySupported } = useSelector((state) => state.currency);
+  const { currencyConversion, loadingConversion } = useSelector(
+    (state) => state.conversion
+  );
 
   const getName = (code) => {
     return currencySupported.find(

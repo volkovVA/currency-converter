@@ -4,8 +4,10 @@ import { useSelector } from 'react-redux';
 import ConverterTable from './ConverterTable';
 
 const ConverterTableContainer = () => {
-  const { currencySupported, currencyConversion, loadingConversion } =
-    useSelector((state) => state.currency);
+  const { currencySupported } = useSelector((state) => state.currency);
+  const { currencyConversion, loadingConversion } = useSelector(
+    (state) => state.conversion
+  );
 
   const createData = (name, calories) => {
     return { name, calories };

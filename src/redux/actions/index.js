@@ -71,19 +71,21 @@ const dd = String(today.getDate()).padStart(2, '0');
 const mm = String(today.getMonth() + 1).padStart(2, '0');
 const yyyy = today.getFullYear();
 
-const fetchExchangeRate = (base, year, month, day) => async (dispatch) => {
-  dispatch(rateRequested());
-  const data = await currencyService.getExchangeRate(
-    base,
-    (year = yyyy),
-    (month = mm),
-    (day = dd)
-  );
-  try {
-    dispatch(rateLoaded(data));
-  } catch (error) {
-    dispatch(rateFailure());
-  }
-};
+const fetchExchangeRate =
+  (base, year, month, day, amount) => async (dispatch) => {
+    dispatch(rateRequested());
+    const data = await currencyService.getExchangeRate(
+      base,
+      (year = yyyy),
+      (month = mm),
+      (day = dd),
+      amount
+    );
+    try {
+      dispatch(rateLoaded(data));
+    } catch (error) {
+      dispatch(rateFailure());
+    }
+  };
 
 export { fetchCurrency, fetchConversion, fetchExchangeRate };

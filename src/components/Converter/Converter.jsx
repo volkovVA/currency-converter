@@ -8,7 +8,7 @@ import ConvertButton from '../ConvertButton/ConvertButton';
 import ConverterOutput from '../ConverterOutput/ConverterOutput';
 import ConverterTableContainer from '../ConverterTables/ConverterTableContainer';
 
-function CurrencyConverter() {
+function Converter() {
   const dispatch = useDispatch();
   const [base, setBase] = useState('');
   const [target, setTarget] = useState('');
@@ -57,4 +57,4 @@ function CurrencyConverter() {
   );
 }
 
-export default CurrencyConverter;
+export default Converter;

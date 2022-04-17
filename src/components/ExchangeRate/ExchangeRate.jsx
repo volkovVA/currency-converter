@@ -5,6 +5,7 @@ import HistoryIcon from '@mui/icons-material/History';
 import { fetchExchangeRate, fetchCurrency } from '../../redux/actions';
 import Autocomplete from '../Autocomplete/Autocomplete';
 import ExchangeRateItem from './ExchangeRateItem';
+import Amount from '../Amount/Amount';
 import classes from './ExchangeRate.module.css';
 
 const ExchangeRate = () => {
@@ -20,6 +21,7 @@ const ExchangeRate = () => {
   const dispatch = useDispatch();
   const [base, setBase] = useState('');
   const [value, setValue] = useState('');
+  const [amount, setAmount] = useState(1);
   const [date, setDate] = useState(getCurrentDate());
 
   const {
@@ -41,7 +43,8 @@ const ExchangeRate = () => {
         base.currency.code,
         value.split('-')[0],
         value.split('-')[1],
-        value.split('-')[2]
+        value.split('-')[2],
+        amount
       )
     );
   };
@@ -57,7 +60,7 @@ const ExchangeRate = () => {
       return currencySupported.map((el) => {
         return {
           ...el,
-          amount: currencyExchangeRate.conversion_rates[el.currency.code],
+          amount: currencyExchangeRate.conversion_amounts[el.currency.code],
         };
       });
     }
@@ -69,7 +72,7 @@ const ExchangeRate = () => {
         <M.Grid item xs={12} sm={12} md={6}>
           <Autocomplete currency={currencySupported} setBase={setBase} />
         </M.Grid>
-        <M.Grid item xs={12} sm={12} md={6}>
+        <M.Grid item xs={12} sm={12} md>
           <M.TextField
             id="date"
             label="Date"
@@ -84,6 +87,9 @@ const ExchangeRate = () => {
               setDate(e.target.value);
             }}
           />
+        </M.Grid>
+        <M.Grid item xs={12} sm={12} md>
+          <Amount setAmount={setAmount} />
         </M.Grid>
         <M.Grid item xs={12} sm={12} md>
           <M.Button
@@ -101,7 +107,8 @@ const ExchangeRate = () => {
       {!loadingExchangeRate ? (
         <M.Box>
           <h1 className={classes.rateTitle}>
-            Exchange Rate: 1 {currencyExchangeRate.base_code}
+            Exchange Rate: {currencyExchangeRate.requested_amount}{' '}
+            {currencyExchangeRate.base_code}
             {', '}
             {currencyExchangeRate.month}/{currencyExchangeRate.day}/
             {currencyExchangeRate.year}

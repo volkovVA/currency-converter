@@ -22,6 +22,7 @@ const ExchangeRate = () => {
   const [base, setBase] = useState('');
   const [value, setValue] = useState('');
   const [amount, setAmount] = useState(1);
+  const [search, setSeacrh] = useState('');
   const [date, setDate] = useState(getCurrentDate());
 
   const {
@@ -57,12 +58,16 @@ const ExchangeRate = () => {
 
   const getDetailCurrencyWithAmount = () => {
     if (currencyExchangeRate && currencySupported) {
-      return currencySupported.map((el) => {
-        return {
-          ...el,
-          amount: currencyExchangeRate.conversion_amounts[el.currency.code],
-        };
-      });
+      return currencySupported
+        .map((el) => {
+          return {
+            ...el,
+            amount: currencyExchangeRate.conversion_amounts[el.currency.code],
+          };
+        })
+        .filter((el) =>
+          el.currency.name.toLowerCase().includes(search.toLowerCase())
+        );
     }
   };
 
@@ -102,6 +107,18 @@ const ExchangeRate = () => {
           >
             get rate
           </M.Button>
+        </M.Grid>
+        <M.Grid item xs={12} sm={12} md>
+          <M.TextField
+            id="filled-search"
+            label="Currency search field"
+            type="search"
+            variant="standard"
+            sx={{ width: '88%', mt: 1 }}
+            onChange={(e) => {
+              setSeacrh(e.target.value);
+            }}
+          />
         </M.Grid>
       </M.Grid>
       {!loadingExchangeRate ? (

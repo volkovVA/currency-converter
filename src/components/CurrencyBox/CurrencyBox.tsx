@@ -1,14 +1,16 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import * as M from '@mui/material';
+import { Box } from '@mui/material';
+
 import ConverterTabs from '../ConverterTabs/ConverterTabs';
 import Converter from '../Converter/Converter';
 import ExchangeRate from '../ExchangeRate/ExchangeRate';
-import classes from './CurrencyBox.module.css';
 
-function CurrencyBox() {
+import styles from './CurrencyBox.module.css';
+
+const CurrencyBox: React.FC = () => {
   return (
-    <M.Box className={classes.currencyBox}>
+    <Box className={styles.currencyBox}>
       <BrowserRouter>
         <ConverterTabs />
         <Routes>
@@ -16,7 +18,7 @@ function CurrencyBox() {
           <Route path="/exchange" element={<ExchangeRate />} />
         </Routes>
       </BrowserRouter>
-    </M.Box>
+    </Box>
   );
 }
 

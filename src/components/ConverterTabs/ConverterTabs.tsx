@@ -1,39 +1,40 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import * as M from '@mui/material';
-import classes from './ConverterTabs.module.css';
+import { Tabs, Tab } from '@mui/material';
 
-function CurrencyTabs() {
+import styles from './ConverterTabs.module.css';
+
+const CurrencyTabs: React.FC = () => {
   const [value, setValue] = useState(0);
 
-  const handleChange = (_, value) => {
+  const handleChange = (_: React.ChangeEvent<{}>, value: number) => {
     setValue(value);
   };
 
   return (
-    <M.Tabs
+    <Tabs
       value={value}
       onChange={handleChange}
       aria-label="nav tabs example"
       indicatorColor="secondary"
       textColor="inherit"
       variant="fullWidth"
-      className={classes.tabs}
+      className={styles.tabs}
       sx={{ mb: 2 }}
     >
-      <M.Tab
+      <Tab
         label="Converter"
         to="/"
         component={Link}
-        className={classes.tabsLink}
+        className={styles.tabsLink}
       />
-      <M.Tab
+      <Tab
         label="Exchange Rate"
         to="/exchange"
         component={Link}
-        className={classes.tabsLink}
+        className={styles.tabsLink}
       />
-    </M.Tabs>
+    </Tabs>
   );
 }
 

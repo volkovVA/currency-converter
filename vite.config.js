@@ -12,4 +12,7 @@ export default defineConfig({
       port: 4000,
       open: true,
   },
+  css: {
+    modules: true
+  }
 });

@@ -4,7 +4,9 @@ import { CircularProgress, Box } from '@mui/material';
 
 import { selectCurrency, selectErrorCurrency } from '../../store/selectors/currencySelectors';
 import { selectCurrencyConversion, selectLoadingConversion, selectErrorConversion } from '../../store/selectors/conversionSelectors';
-import { getBaseNumber, getTargetNumber, getIsoCode, getName, generateRows } from './utils';
+import { getBaseNumber, getTargetNumber, generateRows } from './utils/generateTable';
+import { getName } from '../../utils/getName';
+import { getIsoCode } from '../../utils/getIsoCode';
 
 import ConverterTable from './ConverterTable';
 import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';

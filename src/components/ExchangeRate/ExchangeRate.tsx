@@ -7,7 +7,7 @@ import { selectCurrency, selectLoadingCurrency, selectErrorCurrency } from '../.
 import { selectCurrencyExchangeRate, selectLoadingExchangeRate, selectErrorExchangeRate } from '../../store/selectors/exchangeRateSelectors';
 import { fetchExchangeRate } from '../../store/slices/exchangeRateSlice';
 import { fetchCurrency } from '../../store/slices/currencySlice';
-import { getYesterdayDate } from '../../utils/getCurrentDate'
+import { getCurrentDate } from '../../utils/getCurrentDate'
 
 import Autocomplete from '../Autocomplete/Autocomplete';
 import ExchangeRateItem from './ExchangeRateItem';
@@ -21,7 +21,7 @@ const ExchangeRate: React.FC = () => {
   const [base, setBase] = useState<string>('');
   const [amount, setAmount] = useState<string>('');
   const [search, setSeacrh] = useState<string>('');
-  const [date, setDate] = useState<string>(getYesterdayDate());
+  const [date, setDate] = useState<string>(getCurrentDate());
 
   const { currency, loadingCurrency, errorCurrency } = useSelector((state) => ({
     currency: selectCurrency(state),

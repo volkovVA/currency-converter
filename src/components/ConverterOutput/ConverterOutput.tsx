@@ -6,7 +6,9 @@ import { selectCurrency, selectErrorCurrency } from '../../store/selectors/curre
 import { selectCurrencyConversion, selectLoadingConversion, selectErrorConversion } from '../../store/selectors/conversionSelectors';
 
 import ErrorIndicator from '../ErrorIndicator/ErrorIndicator';
-import { getName, formatDate, getNumber } from './utils';
+import { getNumber } from '../../utils/getNumber';
+import { formatDate } from '../../utils/formatDate';
+import { getName } from '../../utils/getName';
 import styles from './ConverterOutput.module.css';
 
 const ConverterOutput: React.FC = () => {

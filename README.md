@@ -8,14 +8,21 @@
 - Redux
 - MUI
 
+### 05.2024:
+
+- Migrate to Vite
+- Migrate to Redux-Toolkit
+- Add TypeScript
+- Edit components
+
 ---
 
 ### Live Demo: [CurrencyConverter](https://cool-licorice-dd2a82.netlify.app/)
 
 ---
 
-![currency-converter](screenshots/demo1.png 'demo currency-converter')
-![currency-converter](screenshots/demo2.png 'demo currency-converter')
+![currency-converter](screenshots/demo1.png "demo currency-converter")
+![currency-converter](screenshots/demo2.png "demo currency-converter")
 
 ## Available Scripts
 
